@@ -5,7 +5,7 @@ import {
     FooterLeft,
     FooterRight
 } from './style';
-import { HeaderRight } from '../app-header/style';
+// import { HeaderRight } from '../app-header/style';
 export default memo(function HYAppFooter() {
     const showLine = (index) => {
         if(index<5) {
@@ -15,7 +15,7 @@ export default memo(function HYAppFooter() {
         }
     }
     return (
-        <div className="footer-wrapper" style={{height: "172px", borderTop: "1px solid #d3d3d3", background: "#f2f2f2"}}>
+        <div className="footer-wrapper" style={{height: "172px", borderTop: "1px solid #d3d3d3", background: "#f2f2f2", marginTop: '300px'}}>
         <FooterWrapper className="wrap-v2">
             <FooterLeft>
                 <p className="link">
