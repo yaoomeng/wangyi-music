@@ -18,7 +18,7 @@ export default memo(function HYAppHeader() {
                 </NavLink>)
         }else {
             // 当您的页面链接至使用 target="_blank" 的另一个页面时，新页面将与您的页面在同一个进程上运行。 如果新页面正在执行开销极大的 JavaScript，您的页面性能可能会受影响。
-            // 
+            // 因此需要加上 rel="noopener noreferrer"
             return <a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a>
         }
     }
@@ -26,7 +26,7 @@ export default memo(function HYAppHeader() {
         <HeaderWrapper>
             <div className="content wrap-v1">
                 <HeaderLeft>
-                    <a href="#/" className="logo sprite_01"></a>
+                    <a href="#/" className="logo sprite_01"> </a>
                     <div className="select-list">
                         {
                             headerLinks.map((item, index) => {

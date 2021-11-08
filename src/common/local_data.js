@@ -1,7 +1,7 @@
 export const headerLinks = [
     {
       title: "发现音乐",
-      link: "/"
+      link: "/discover"
     },
     {
       title: "我的音乐",
@@ -71,33 +71,33 @@ export const headerLinks = [
     }
   ]
   
-  // discover中的数据
-  export const dicoverMenu = [
-    {
-      title: "推荐",
-      link: "/recommend"
-    },
-    {
-      title: "排行榜",
-      link: "/ranking"
-    },
-    {
-      title: "歌单",
-      link: "/songs"
-    },
-    {
-      title: "主播电台",
-      link: "/djradio"
-    },
-    {
-      title: "歌手",
-      link: "/artist"
-    },
-    {
-      title: "新碟上架",
-      link: "/album"
-    },
-  ]
+ // discover中的数据
+export const discoverMenu = [
+  {
+    title: "推荐",
+    link: "/discover/recommend"
+  },
+  {
+    title: "排行榜",
+    link: "/discover/ranking"
+  },
+  {
+    title: "歌单",
+    link: "/discover/songs"
+  },
+  {
+    title: "主播电台",
+    link: "/discover/djradio"
+  },
+  {
+    title: "歌手",
+    link: "/discover/artist"
+  },
+  {
+    title: "新碟上架",
+    link: "/discover/album"
+  },
+]
   
   // 热门主播
   export const hotRadios = [
