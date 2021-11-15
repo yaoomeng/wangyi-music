@@ -29,6 +29,8 @@ export default memo(function HYDiscover(props) {
                 </div>
             </div>
             {renderRoutes(props.route.routes)}
+            
+
         </DiscoverWrapper>
     )
 })
