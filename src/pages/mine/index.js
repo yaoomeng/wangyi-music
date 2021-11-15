@@ -4,6 +4,7 @@ export default memo(function HYMine() {
     return (
         <div>
             <h2>HYMine</h2>
+            <h2>HYMine</h2>
         </div>
     )
 })

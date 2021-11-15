@@ -1,13 +1,27 @@
 import React, { memo } from 'react';
 
 import {
-    RecommendWrapper 
+    RecommendWrapper,
+    Content,
+    RecommendLeft,
+    RecommendRight 
 } from './style'
 import HYTopBanner from './c-cpns/top-banner/index';
+import HYHotRecommend from './c-cpns/hot-recommend/index';
+import HYNewAlbum from './c-cpns/new-album';
+import HYRecommendRanking from './c-cpns/recommend-ranking';
 function HYRecommend(props) {
     return (
         <RecommendWrapper>
             <HYTopBanner></HYTopBanner>
+            <Content className="wrap-v2">
+                <RecommendLeft>
+                    <HYHotRecommend></HYHotRecommend>
+                    <HYNewAlbum></HYNewAlbum>
+                    <HYRecommendRanking></HYRecommendRanking>
+                </RecommendLeft>
+                <RecommendRight></RecommendRight>
+            </Content>
         </RecommendWrapper>
     )
 }
