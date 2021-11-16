@@ -42,7 +42,8 @@ export default memo(function HYTopBanner() {
     // 不能直接用以下代码来取图片地址，因为一开始的时候topBanner是空，那么从空数组中取数会有问题
     // const bgImage = topBanners[currentIndex].imageUrl
     // 当前播放的图片地址后拼接"?imageView&blur=40x20"，服务器会将此图片处理成模糊图片作为整个轮播图的背景
-    const bgImage = topBanners[currentIndex] && (topBanners[currentIndex].imageUrl + "?imageView&blur=40x20");
+    // const bgImage = topBanners[currentIndex] && (topBanners[currentIndex].imageUrl + "?imageView&blur=40x20");
+    const bgImage = topBanners[currentIndex] ? (topBanners[currentIndex].imageUrl + "?imageView&blur=40x20") : "";
     return (
         <div>
             <BannerWrapper bgImage={bgImage}>
