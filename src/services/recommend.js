@@ -24,3 +24,14 @@ export function getNewAlbums(limit) {
         }
     })
 }
+
+// 榜单
+// idx=0 新歌榜  idx=2 原创榜 idx=3 飙升榜
+export function getTopList(idx)  {
+    return request({
+        url: '/top/list',
+        params: {
+            idx
+        }
+    })
+}

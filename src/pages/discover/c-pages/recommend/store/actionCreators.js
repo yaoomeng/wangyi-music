@@ -4,7 +4,8 @@ import * as actionTypes from './constants';
 import { 
     getTopBanners,
     getHotRecommends,
-    getNewAlbums 
+    getNewAlbums,
+    getTopList 
 } from '@/services/recommend';
 
 // 返回对象
@@ -21,6 +22,24 @@ const changeHotRecommendAction = (res) => ({
 const changeNewAlbumAction = (res) => ({
     type: actionTypes.CHANGE_NEW_ALBUM,
     newAlbums: res.albums
+})
+
+const changeUpRankingAction = (res) => ({
+    type: actionTypes.CHANGE_UP_RANKING,
+    upRanking: res.playlist
+
+})
+
+const changeNewRankingAction = (res) => ({
+    type: actionTypes.CHANGE_NEW_RANKING,
+    newRanking: res.playlist
+
+})
+
+const changeOriginRankingAction = (res) => ({
+    type: actionTypes.CHANGE_ORIGIN_RANKING,
+    originRanking: res.playlist
+
 })
 // 返回函数
 export const getTopBannerAction = () => {
@@ -45,6 +64,26 @@ export const getNewAlbumAction = (limit) => {
     return dispatch => {
         getNewAlbums(limit).then(res => {
             dispatch(changeNewAlbumAction(res))
+        })
+    }
+}
+
+export const getTopListAction = (idx) => {
+    return dispatch => {
+        getTopList(idx).then(res => {
+            switch(idx) {
+                case 0:
+                    dispatch(changeNewRankingAction(res));
+                    break;
+                case 2:
+                    dispatch(changeOriginRankingAction(res));
+                    break;
+                case 3:
+                    dispatch(changeUpRankingAction(res));
+                    break;
+                default:
+
+            }
         })
     }
 }
