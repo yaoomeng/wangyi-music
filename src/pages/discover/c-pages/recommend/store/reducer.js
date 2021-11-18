@@ -1,7 +1,8 @@
 import { Map } from 'immutable';
 import {
     CHANGE_TOP_BANNERS,
-    CHANGE_HOT_RECOMMEND
+    CHANGE_HOT_RECOMMEND,
+    CHANGE_NEW_ALBUM
 } from './constants'
 
 //考虑到性能，我们用immutable中的Map对数据进行包裹，
@@ -10,7 +11,8 @@ import {
 // }
 const defaultState = Map({
     topBanners: [],
-    hotRecommends: []
+    hotRecommends: [],
+    newAlbums: []
 })
 function reducer(state=defaultState, action) {
     switch(action.type) {
@@ -20,6 +22,8 @@ function reducer(state=defaultState, action) {
             return state.set("topBanners", action.topBanners);
         case CHANGE_HOT_RECOMMEND:
             return state.set("hotRecommends", action.hotRecommends);
+        case CHANGE_NEW_ALBUM:
+            return state.set("newAlbums", action.newAlbums); 
         default: 
             return state;
     }
