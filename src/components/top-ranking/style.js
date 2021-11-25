@@ -49,9 +49,11 @@ export const TopRankingWrapper = styled.div`
     .list {
         margin-top: 20px;
         .list-item {
-            position: relative;
+            /* position: relative; */
             display: flex;
             height: 32px;
+            width: 230px;
+            padding-left: 20px;
             align-items: center;
             :nth-child(-n+3) .rank {
                 color: #c10d0c;
@@ -63,43 +65,58 @@ export const TopRankingWrapper = styled.div`
                 line-height: 32px;
                 text-align: center;               
             }
-            .name {
-                display: inline-block;
+            .info {
                 width: 170px;
-                height: 32px;
-                line-height: 32px;
-                a {
-                    color: #000;
-                }
-                
-            }
-            .operate {
-                position: absolute;
-                right: 5px;
                 display: flex;
+                justify-content: space-between;
                 align-items: center;
-                display: none;
-                width: 82px;
-                .btn {
-                    width: 17px;
-                    height: 17px;
-                    margin-left: 8px;
-                    cursor: pointer; 
+                
+                .name {
+                    display: inline-block;
+                    height: 32px;
+                    line-height: 32px;
+                    flex: 1;
+                    color: #000;
+                
                 }
-                .play {
-                    background-position: -267px -268px;
-                }
+                .operate {
+                    /* position: absolute; */
+                    /* right: 5px; */
+                    display: flex;
+                    align-items: center;
+                    display: none;
+                    width: 82px;
+                    .btn {
+                        width: 17px;
+                        height: 17px;
+                        margin-left: 8px;
+                        cursor: pointer; 
+                    }
+                    .play {
+                        background-position: -267px -268px;
+                        &:hover {
+                            background-position: -267px -288px;
+                        } 
+                    }
 
-                .addto {
-                    position: relative;
-                    top: 2px;
-                    background-position: 0 -700px;
-                }
+                    .addto {
+                        position: relative;
+                        top: 2px;
+                        background-position: 0 -700px;
+                        &:hover {
+                            background-position: -22px -700px;
+                        }
+                    }
 
-                .favor {
-                    background-position: -297px -268px;
+                    .favor {
+                        background-position: -297px -268px;
+                        &:hover {
+                            background-position: -297px -288px;
+                        } 
+                    }
                 }
             }
+            
             &:hover {
                 .operate {
                 display: block;

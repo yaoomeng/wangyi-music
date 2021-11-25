@@ -25,12 +25,15 @@ export default memo(function HYTopRanking(props) {
                         return (
                             <div key={item.id} className="list-item">
                                 <div className="rank">{index + 1}</div>
-                                <span className="name"><a className="text-nowrap" href="todo">{item.name}</a></span>
-                                <div className="operate">
-                                    <button className="btn sprite_02 play"></button>
-                                    <button className="btn sprite_icon2 addto"></button>
-                                    <button className="btn sprite_02 favor"></button>
+                                <div className="info">
+                                    <a className="name text-nowrap" href="/todo">{item.name}</a>
+                                    <div className="operate">
+                                        <button className="btn sprite_02 play"></button>
+                                        <button className="btn sprite_icon2 addto"></button>
+                                        <button className="btn sprite_02 favor"></button>
+                                    </div>
                                 </div>
+                               
                             </div>
                         )
                     })
