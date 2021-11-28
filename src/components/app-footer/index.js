@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { footerLinks, footerImages } from '@/common/local_data';
 import { 
+    Wrapper,
     FooterWrapper,
     FooterLeft,
     FooterRight
@@ -15,7 +16,7 @@ export default memo(function HYAppFooter() {
         }
     }
     return (
-        <div className="footer-wrapper" style={{height: "172px", borderTop: "1px solid #d3d3d3", background: "#f2f2f2"}}>
+        <Wrapper>
             <FooterWrapper className="wrap-v2">
                 <FooterLeft>
                     <p className="link">
@@ -73,6 +74,6 @@ export default memo(function HYAppFooter() {
                 </FooterRight>
                 
             </FooterWrapper>
-        </div>
+        </Wrapper>
     )
 })

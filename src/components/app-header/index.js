@@ -1,4 +1,5 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
+import { withRouter } from "react-router";
 import { 
     HeaderWrapper,
     HeaderLeft,
@@ -8,7 +9,20 @@ import { headerLinks } from '@/common/local_data';
 import { NavLink } from 'react-router-dom';
 import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-export default memo(function HYAppHeader() {
+
+function HYAppHeader(props) {
+    // 监听路由变化给发现音乐添加类名active,有问题未解决
+    useEffect(() => {
+        if(props.location.pathname.split('/')[2] === "recommend") {
+            let obj= document.getElementsByClassName("select-item")[0].childNodes;
+            obj[0].classList.add("active");
+            console.log(obj[0].className);
+        }
+        
+    }, [])
+
+
+    // *******************************
     function showSelectItem(item, index) {
         if(index < 3) {
             return (
@@ -52,4 +66,5 @@ export default memo(function HYAppHeader() {
             <div className="divider"></div>
         </HeaderWrapper>
     )
-})
+}
+export default memo(withRouter(HYAppHeader));

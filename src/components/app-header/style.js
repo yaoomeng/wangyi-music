@@ -4,7 +4,6 @@ export const HeaderWrapper = styled.div`
     height: 75px;
     background-color: #242424;
     font-size: 14px;
-
     .content {
         height: 70px;
         display: flex;
@@ -63,7 +62,7 @@ export const HeaderLeft = styled.div`
                 height: 7px;
                 margin-left: -6px;
                 overflow: hidden;
-                background-position: -226px 0;
+                background-position: -226px 0px;
             }
         }
         
