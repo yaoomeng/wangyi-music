@@ -1,5 +1,9 @@
 import styled from "styled-components";
-
+export const Wrapper = styled.div`
+    height: 172px;
+    border-top: 1px solid #d3d3d3;
+    background: #f2f2f2;
+`
 export const FooterWrapper = styled.div`
     height: 115px;
     display: flex;

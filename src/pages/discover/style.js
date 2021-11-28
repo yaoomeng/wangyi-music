@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
 export const DiscoverWrapper = styled.div`
-    height: 30px;
+    /* height: 30px; */
     width: 100%;
-    background-color: #C20C0C;
+    /* background-color: #C20C0C; */
     box-sizing: border-box;
-    border-bottom: 1px solid #a40011;
+    /* border-bottom: 1px solid #a40011; */
     .top {
+        background-color: #C20C0C;
+        border-bottom: 1px solid #a40011;
         height: 30px;
+        width: 100%;
         .discoverNav {
             width: 744px;
             height: 30px;
@@ -60,30 +63,6 @@ export const DiscoverWrapper = styled.div`
                 left: 610px;
                 top: -5px;
             }
-            /* .item0 {
-                left: 180px;
-                top: -5px;
-            }
-            .item1 {
-                left: 260px;
-                top: -5px;
-            }
-            .item2 {
-                left: 350px;
-                top: -5px;
-            }
-            .item3 {
-                left: 425px;
-                top: -5px;
-            }
-            .item4 {
-                left: 530px;
-                top: -5px;
-            }
-            .item5 {
-                left: 610px;
-                top: -5px;
-            } */
         }
        
     }
