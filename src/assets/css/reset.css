@@ -92,6 +92,10 @@ body, textarea, select, input, button {
   background: url(../img/sprite_button2.png) no-repeat 0 9999px;
 }
 
+.button {
+  background: url(../img/button.png) no-repeat 0 9999px;
+}
+
 .sprite_table {
   background: url(../img/sprite_table.png) no-repeat 0 9999px;
 }
