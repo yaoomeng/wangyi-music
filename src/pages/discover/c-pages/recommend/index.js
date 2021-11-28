@@ -10,6 +10,9 @@ import HYTopBanner from './c-cpns/top-banner/index';
 import HYHotRecommend from './c-cpns/hot-recommend/index';
 import HYNewAlbum from './c-cpns/new-album';
 import HYRecommendRanking from './c-cpns/recommend-ranking';
+import HYUserLogin from './c-cpns/user-login';
+import HYSettleSinger from './c-cpns/settle-singer';
+import HYHotAnchor from './c-cpns/hot-anchor';
 function HYRecommend(props) {
     return (
         <RecommendWrapper>
@@ -20,7 +23,11 @@ function HYRecommend(props) {
                     <HYNewAlbum></HYNewAlbum>
                     <HYRecommendRanking></HYRecommendRanking>
                 </RecommendLeft>
-                <RecommendRight></RecommendRight>
+                <RecommendRight>
+                    <HYUserLogin></HYUserLogin>
+                    <HYSettleSinger></HYSettleSinger>
+                    <HYHotAnchor></HYHotAnchor>
+                </RecommendRight>
             </Content>
         </RecommendWrapper>
     )

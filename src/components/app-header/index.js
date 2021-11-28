@@ -16,7 +16,6 @@ function HYAppHeader(props) {
         if(props.location.pathname.split('/')[2] === "recommend") {
             let obj= document.getElementsByClassName("select-item")[0].childNodes;
             obj[0].classList.add("active");
-            console.log(obj[0].className);
         }
         
     }, [])

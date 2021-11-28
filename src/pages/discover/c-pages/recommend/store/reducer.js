@@ -5,7 +5,8 @@ import {
     CHANGE_NEW_ALBUM,
     CHANGE_NEW_RANKING,
     CHANGE_UP_RANKING,
-    CHANGE_ORIGIN_RANKING
+    CHANGE_ORIGIN_RANKING,
+    CHANGE_SETTLE_SINGER
 } from './constants'
 
 //考虑到性能，我们用immutable中的Map对数据进行包裹，
@@ -18,7 +19,8 @@ const defaultState = Map({
     newAlbums: [],
     newRanking: {},
     upRanking: {},
-    originRanking: {}
+    originRanking: {},
+    settleSingers: [],
 })
 function reducer(state=defaultState, action) {
     switch(action.type) {
@@ -36,6 +38,8 @@ function reducer(state=defaultState, action) {
             return state.set("upRanking", action.upRanking);
         case CHANGE_ORIGIN_RANKING:
             return state.set("originRanking", action.originRanking);
+        case CHANGE_SETTLE_SINGER:
+            return state.set("settleSingers", action.settleSingers);
         default: 
             return state;
     }

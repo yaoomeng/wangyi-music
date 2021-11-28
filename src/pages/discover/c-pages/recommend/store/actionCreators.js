@@ -5,7 +5,8 @@ import {
     getTopBanners,
     getHotRecommends,
     getNewAlbums,
-    getTopList 
+    getTopList,
+    getArtistList 
 } from '@/services/recommend';
 
 // 返回对象
@@ -40,6 +41,11 @@ const changeOriginRankingAction = (res) => ({
     type: actionTypes.CHANGE_ORIGIN_RANKING,
     originRanking: res.playlist
 
+})
+
+const changeSettleSingersAction = (res) => ({
+    type: actionTypes.CHANGE_SETTLE_SINGER,
+    settleSingers: res.artists
 })
 // 返回函数
 export const getTopBannerAction = () => {
@@ -84,6 +90,14 @@ export const getTopListAction = (idx) => {
                 default:
 
             }
+        })
+    }
+}
+
+export const getSettleSingersAction = (limit, cat) => {
+    return dispatch => {
+        getArtistList(limit, cat).then(res => {
+            dispatch(changeSettleSingersAction(res));
         })
     }
 }
