@@ -27,7 +27,7 @@ export default memo(function HYSettleSinger() {
                 {
                     settleSingers.map((item, index) => {
                         return (
-                            <li>
+                            <li key={item.name}>
                                 <a href="/todo" className="singer">
                                     <div className="picture">
                                         <img src={getSizeImage(item.img1v1Url, 62)} alt="" />

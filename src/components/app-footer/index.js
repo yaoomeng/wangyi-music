@@ -23,17 +23,16 @@ export default memo(function HYAppFooter() {
                         {
                             footerLinks.map((item, index) => {
                                     return (
-                                        <>
+                                        <span key={item.link}>
                                             <a 
-                                                href={item.link}
-                                                key={item.link}
+                                                href={item.link}                    
                                                 target="_blank"
                                                 rel="noreferrer"
                                             >
                                                 {item.title}
                                             </a>
                                             { showLine(index) }
-                                        </>
+                                        </span>
                                     )
                             }) 
                         }
