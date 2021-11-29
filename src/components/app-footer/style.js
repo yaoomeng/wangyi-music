@@ -20,7 +20,7 @@ export const FooterLeft = styled.div`
         line-height: 24px;
         color: #666;
     }
-    p.link {
+    .link {
         a {
             color: #999;    
         }    
