@@ -1,3 +1,4 @@
+import { Redirect }  from "react-router-dom";
 import React from 'react';
 import HYDiscover from '@/pages/discover';
 import HYFriend from '@/pages/friend';
@@ -8,7 +9,8 @@ import HYDjradio from '@/pages/discover/c-pages/djradio';
 import HYRanking from '@/pages/discover/c-pages/ranking';
 import HYRecommend from '@/pages/discover/c-pages/recommend';
 import HYSongs from '@/pages/discover/c-pages/songs';
-import { Redirect }  from "react-router-dom";
+import HYPlayer from '@/pages/player';
+
 
 const routes = [
     {
@@ -52,6 +54,10 @@ const routes = [
             {
                 path: '/discover/songs',
                 component: HYSongs
+            },
+            {
+                path: '/discover/player',
+                component: HYPlayer
             }
         ]
     },
