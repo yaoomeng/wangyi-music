@@ -8,7 +8,7 @@ import {
 import {
     getSizeImage
 } from '@/utils/format-utils';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 export default memo(function HYHotAnchor() {
     return (
         <HotAnchorWrapper>

@@ -9,6 +9,7 @@ export const PlaybarWrapper = styled.div`
     height: 52px;
     background-position: 0 0;
     background-repeat: repeat; 
+    display: none;
     .content {
         display: flex;
         position: absolute;
@@ -183,6 +184,42 @@ export const Operator = styled.div`
       color: #ccc;
       width: 59px;
       background-position: -42px -68px;
+    }
+  }
+`
+
+export const LockWrapper = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 20px;
+  background-position: 0 0;
+  background-repeat: repeat; 
+  width: 100%;
+  z-index: 9999;
+  cursor: pointer;
+  .lock {
+    background-position: 0 -380px;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    width: 52px;
+    height: 67px;
+    z-index: 9;
+    .lock-icon {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      margin: 6px 0 0 17px;
+      right: 20px;
+      top: 0;
+      cursor: pointer;
+      /* background-position: -80px -380px; */
+      background-position: ${props => props.isLock ? "-100px": "-80px"} -380px;
+      &:hover {
+        background-position: ${props => props.isLock ? "-100px": "-80px"} -400px;
+      }
     }
   }
 `
