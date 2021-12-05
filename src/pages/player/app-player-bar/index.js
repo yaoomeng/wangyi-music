@@ -1,7 +1,12 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Slider } from 'antd';
-import { changeSequenceAction, getSongDetailAction } from '../store/actionCreators';
+import { 
+    changeSequenceAction, 
+    getSongDetailAction,
+    changeCurrentSong,
+
+} from '../store/actionCreators';
 import { 
     PlaybarWrapper,
     Control,
@@ -29,11 +34,18 @@ export default memo(function HYAppPlayerBar() {
     
     // 控制播放组件是否锁定
     const [isLock, setIsLock] = useState(false);
+
+    
     useEffect(() => {
         dispatch(getSongDetailAction(1888915574));
     }, [dispatch]);
     useEffect(() => {
         playRef.current.src = getPlaySong(currentSong.id);
+        playRef.current.play().then(res => {
+            setIsPlaying(true);
+        }).catch(err => {
+            setIsPlaying(false);
+        })
     }, [currentSong]);
 
     const playRef = useRef(null);
@@ -85,15 +97,34 @@ export default memo(function HYAppPlayerBar() {
     }
 
     const coverPlay = () => {
+        if(!isLock) {
+            showPlayRef.current.style.display = "none";
+            lockPositionRef.current.style.bottom = "0";      
+            setIsShowPlay(false);
+        }
         
-        showPlayRef.current.style.display = "none";
-        lockPositionRef.current.style.bottom = "0";      
-        setIsShowPlay(false);
     }
 
     const changeSequence = () => {
         let currentSequence = (sequence+1)%3;
         dispatch(changeSequenceAction(currentSequence))
+    }
+
+    const changeMusic = (tag) => {
+        // tag=-1代表播放上一首 tag=1代表播放下一首
+        // 由于逻辑太多，将处理代码存放在在redux中的actionCreators中
+        dispatch(changeCurrentSong(tag));
+    }
+
+    const handleMusicEnded = () => {
+        if(sequence === 2) {  // 单曲循环
+            playRef.current.currentTime = 0;
+            playRef.current.play();
+
+
+        } else {
+            dispatch(changeCurrentSong(1));
+        }
     }
     return (
         <div>
@@ -118,9 +149,15 @@ export default memo(function HYAppPlayerBar() {
             >
                 <div className="content wrap-v2">
                     <Control isPlaying={isPlaying}>
-                        <button className="prev playbar"></button>
+                        <button 
+                            className="prev playbar"
+                            onClick={e => changeMusic(-1)}
+                        ></button>
                         <button className="play playbar" onClick={e => play()}></button>
-                        <button className="next playbar"></button>
+                        <button 
+                            className="next playbar"
+                            onClick={e => changeMusic(1)}
+                        ></button>
                     </Control>
                     <PlayInfo>
                         <div className="image">
@@ -171,6 +208,7 @@ export default memo(function HYAppPlayerBar() {
                     <audio 
                         ref={playRef} 
                         onTimeUpdate={e => timeUpdate(e)}
+                        onEnded={e => handleMusicEnded()}
                         
                     />
                 </div>
