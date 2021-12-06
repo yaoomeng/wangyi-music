@@ -32,6 +32,11 @@ export const changeSequenceAction = (sequence) => ({
     sequence
 });
 
+export const changeCurrentLyricIndexAction = (index) => ({
+    type: actionTypes.CHANGE_CURRENT_LYRIC_INDEX,
+    index
+})
+
 
 // 点击上一首 下一首的实现逻辑
 export const changeCurrentSong = (tag) => {
@@ -126,8 +131,9 @@ export const getLyricAction = (id) => {
             const lyric = res.lrc.lyric;
             // 解析歌词
             const lyricList = parseLyric(lyric);
-            dispatch(changeLyricAction(lyricList));
 
+            dispatch(changeLyricAction(lyricList));
+            
         })
     }
 }

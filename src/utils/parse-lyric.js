@@ -27,7 +27,7 @@ export function parseLyric(lyricString) {
          if(lineString) {
             // 时间
             const result = parseExp.exec(lineString);
-            if(result) continue;
+            if(!result) continue;
             // 将时间转换为ms
             const time1 = result[1] * 60 * 1000;
             const time2 = result[2] * 1000;
@@ -39,7 +39,7 @@ export function parseLyric(lyricString) {
             lyrics.push(lineObj);
          }
         
-    }
+    }  
     return lyrics;
 
 }

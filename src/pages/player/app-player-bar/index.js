@@ -1,10 +1,11 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Slider } from 'antd';
+import { Slider, message } from 'antd';
 import { 
     changeSequenceAction, 
     getSongDetailAction,
     changeCurrentSong,
+    changeCurrentLyricIndexAction
 
 } from '../store/actionCreators';
 import { 
@@ -19,9 +20,16 @@ import { shallowEqual, useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 export default memo(function HYAppPlayerBar() {
     const dispatch = useDispatch();
-    const {currentSong, sequence} = useSelector(state => ({
+    const {
+        currentSong, 
+        sequence, 
+        lyric,
+        currentLyricIndex
+    } = useSelector(state => ({
         currentSong: state.getIn(["player", "currentSong"]),
-        sequence: state.getIn(["player", "sequence"])
+        sequence: state.getIn(["player", "sequence"]),
+        lyric: state.getIn(["player", "lyric"]),
+        currentLyricIndex: state.getIn(["player", "currentLyricIndex"])
     }), shallowEqual);
     const [currentTime, setCurrentTime] = useState(0);
     const [progress, setProgress] = useState(0);
@@ -70,6 +78,30 @@ export default memo(function HYAppPlayerBar() {
             setCurrentTime(e.target.currentTime * 1000);
             setProgress(currentTime / duration * 100);
         }
+
+        // 获取当前歌词
+
+        // 当前歌词处于歌词列表中的索引值
+        let index = 0;
+        for(let i=0; i<lyric.length; i++) {
+            if(e.target.currentTime*1000 < lyric[i].time) {
+                index = i-1;
+                break;  
+            }
+        }
+        if(currentLyricIndex !== index) {
+            dispatch(changeCurrentLyricIndexAction(index));
+            const content = lyric[index] && lyric[index].content;
+
+            // 此消息组件未渲染到root中，那么将样式写在全局css样式中
+            message.open({
+                key: "lyric",
+                className: "lyric-class",
+                duration: 0,
+                content: content
+            })
+        }
+       
         
     };
     const slideChange = useCallback((value) => {
