@@ -392,7 +392,9 @@ const defaultState = Map({
     lyric: [],
 
     // 当前歌词处于歌词列表中的索引值
-    currentLyricIndex: 0
+    currentLyricIndex: 0,
+    // 是否显示歌词列表
+    showPlayList: false
 
 })
 function reducer(state=defaultState, action) {
@@ -409,6 +411,8 @@ function reducer(state=defaultState, action) {
             return state.set("lyric", action.lyric);
         case actionTypes.CHANGE_CURRENT_LYRIC_INDEX:
             return state.set("currentLyricIndex", action.index);
+        case actionTypes.CHANGE_SHOW_PLAYLIST:
+            return state.set("showPlayList", action.showPlayList);
         default:
             return state;
     }

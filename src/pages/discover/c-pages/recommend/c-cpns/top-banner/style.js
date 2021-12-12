@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 export const BannerWrapper = styled.div`
+    z-index: 99;
     height: 270px;
     background-color: transparent;
     background: url(${(props) => props.bgImage});
@@ -27,10 +28,11 @@ export const BannerLeft = styled.div`
 
     }
     .ant-carousel .slick-dots li button {
-        background-color: red;
+        /* background-color: red; */
         width: 20px;
         height: 20px;
         margin-left: -5px;
+
         background: url(${require("@/assets/img/banner_sprite.png").default}) no-repeat 3px -343px;
         &:hover {
             background-position: -16px -343px;
