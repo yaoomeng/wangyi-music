@@ -37,6 +37,10 @@ export const changeCurrentLyricIndexAction = (index) => ({
     index
 })
 
+export const changeShowPlayList = (showPlayList) => ({
+    type: actionTypes.CHANGE_SHOW_PLAYLIST,
+    showPlayList
+})
 
 // 点击上一首 下一首的实现逻辑
 export const changeCurrentSong = (tag) => {

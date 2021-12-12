@@ -107,6 +107,14 @@ body, textarea, select, input, button {
 .statbar {
   background: url(../img/statbar.png) no-repeat 0 9999px;
 }
+
+.playlist_bg {
+  background: url(../img/playlist_bg.png) no-repeat 0 9999px;
+}
+
+.playlist2_bg {
+  background: url(../img/playlist2_bg.png) no-repeat 0 9999px;
+}
 .image_cover {
   position: absolute;
   left: 0;
@@ -116,6 +124,8 @@ body, textarea, select, input, button {
   text-indent: -9999px;
   background: url(../img/sprite_cover.png) no-repeat -145px -57px;
 }
+
+
 
 .lyric-class .ant-message-notice-content{
   left: 50%;

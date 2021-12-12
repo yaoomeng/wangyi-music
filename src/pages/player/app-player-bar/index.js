@@ -5,8 +5,8 @@ import {
     changeSequenceAction, 
     getSongDetailAction,
     changeCurrentSong,
-    changeCurrentLyricIndexAction
-
+    changeCurrentLyricIndexAction,
+    changeShowPlayList
 } from '../store/actionCreators';
 import { 
     PlaybarWrapper,
@@ -15,6 +15,8 @@ import {
     Operator,
     LockWrapper 
 } from './style';
+
+import HYOpenPlayList from './player-open-playList/index';
 import { getSizeImage, formatMinuteSecond, getPlaySong } from '@/utils/format-utils';
 import { shallowEqual, useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -24,12 +26,16 @@ export default memo(function HYAppPlayerBar() {
         currentSong, 
         sequence, 
         lyric,
-        currentLyricIndex
+        currentLyricIndex,
+        playList,
+        showPlayList
     } = useSelector(state => ({
         currentSong: state.getIn(["player", "currentSong"]),
         sequence: state.getIn(["player", "sequence"]),
         lyric: state.getIn(["player", "lyric"]),
-        currentLyricIndex: state.getIn(["player", "currentLyricIndex"])
+        currentLyricIndex: state.getIn(["player", "currentLyricIndex"]),
+        playList: state.getIn(["player", "playList"]),
+        showPlayList: state.getIn(["player", "showPlayList"])
     }), shallowEqual);
     const [currentTime, setCurrentTime] = useState(0);
     const [progress, setProgress] = useState(0);
@@ -42,7 +48,6 @@ export default memo(function HYAppPlayerBar() {
     
     // 控制播放组件是否锁定
     const [isLock, setIsLock] = useState(false);
-
     
     useEffect(() => {
         dispatch(getSongDetailAction(1888915574));
@@ -129,7 +134,7 @@ export default memo(function HYAppPlayerBar() {
     }
 
     const coverPlay = () => {
-        if(!isLock) {
+        if(!isLock && !showPlayList) {
             showPlayRef.current.style.display = "none";
             lockPositionRef.current.style.bottom = "0";      
             setIsShowPlay(false);
@@ -157,6 +162,9 @@ export default memo(function HYAppPlayerBar() {
         } else {
             dispatch(changeCurrentSong(1));
         }
+    }
+    const changeIsShowPlaylist = () => {
+        dispatch(changeShowPlayList(!showPlayList))
     }
     return (
         <div>
@@ -234,7 +242,12 @@ export default memo(function HYAppPlayerBar() {
                                 className="playbar btn loop" 
                                 onClick={e => changeSequence()}
                             ></button>
-                            <button className="playbar btn playlist"></button>
+                            <button 
+                                className="playbar btn playlist"
+                                onClick={e => changeIsShowPlaylist()}
+                            >   
+                                {playList.length}
+                            </button>
                         </div>
                     </Operator>
                     <audio 
@@ -245,7 +258,8 @@ export default memo(function HYAppPlayerBar() {
                     />
                 </div>
             </PlaybarWrapper>
-            
+            {/* 播放列表 */}
+                <HYOpenPlayList isShowPlayList={showPlayList}></HYOpenPlayList>
         </div>
     )
 })
